@@ -20,12 +20,12 @@ namespace ManlyManFood.Controllers
 	    }
 
 		//GET
-		[Route("/")]
+		[Route("")]
 	    public IEnumerable<Recipe> Get()
 	    {
 		    return _recipesProvider.AllRecipes;
 	    }
-		[Route("/{id}")]
+		[Route("{id}")]
 	    public Recipe Get(int id)
 	    {
 		    return _recipesProvider.AllRecipes.Single(rec => rec.Id == id);
