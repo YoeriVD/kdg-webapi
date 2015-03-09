@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ManlyManFood;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(ManlyManFood.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace ManlyManFood
 {
