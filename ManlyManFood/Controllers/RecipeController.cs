@@ -30,5 +30,11 @@ namespace ManlyManFood.Controllers
 	    {
 		    return _recipesProvider.AllRecipes.Single(rec => rec.Id == id);
 	    }
+
+		[Route("{id}/ingredients")]
+		public IEnumerable<Ingredient> GetIngredientsForRecipe(int id)
+		{
+			return Get(id).Ingredients;
+		}
     }
 }
