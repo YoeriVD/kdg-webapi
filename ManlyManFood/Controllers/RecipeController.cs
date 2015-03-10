@@ -25,7 +25,7 @@ namespace ManlyManFood.Controllers
 	    {
 		    return _recipesProvider.AllRecipes;
 	    }
-		[Route("{id:int}")]
+		[Route("{id:int}", Name = "GetRecipeById")]
 	    public Recipe Get(int id)
 	    {
 		    return _recipesProvider.AllRecipes.Single(rec => rec.Id == id);
@@ -48,7 +48,8 @@ namespace ManlyManFood.Controllers
 			if (!ModelState.IsValid) return BadRequest(ModelState);
 
 			_recipesProvider.Add(recipe);
-			return Created(recipe.Id.ToString(CultureInfo.InvariantCulture), recipe);
+			var url = Url.Link("GetRecipeById", new {recipe.Id});
+			return Created(url, recipe);
 		}
     }
 }
