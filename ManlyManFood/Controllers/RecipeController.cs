@@ -45,12 +45,10 @@ namespace ManlyManFood.Controllers
 		[Route("")]
 		public IHttpActionResult Post(Recipe recipe)
 		{
-			if (ModelState.IsValid)
-			{
-				_recipesProvider.Add(recipe);
-				return Created(recipe.Id.ToString(CultureInfo.InvariantCulture), recipe);
-			}
-			return BadRequest(ModelState);
+			if (!ModelState.IsValid) return BadRequest(ModelState);
+
+			_recipesProvider.Add(recipe);
+			return Created(recipe.Id.ToString(CultureInfo.InvariantCulture), recipe);
 		}
     }
 }
