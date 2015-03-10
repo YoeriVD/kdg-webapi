@@ -5,11 +5,11 @@ namespace ManlyManFood.DataProvider
 {
 	class RecipesProvider
 	{
-		private readonly List<Recipe> _allRecipes;
+		private static List<Recipe> _allRecipes;
 		public RecipesProvider()
 		{
 			var ingredientsProvider = new IngredientsProvider();
-			_allRecipes = new List<Recipe>
+			if (_allRecipes == null) _allRecipes = new List<Recipe>
 			{
 					new Recipe(){Id = 1 ,  Name = "Ranzig gerecht", Ingredients = ingredientsProvider.GetIngredientsByIndex(1,2)},
 					new Recipe(){Id = 2 ,  Name = "Vies gerecht", Ingredients = ingredientsProvider.GetIngredientsByIndex(2,6,5)},
