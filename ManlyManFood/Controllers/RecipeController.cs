@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -40,6 +41,16 @@ namespace ManlyManFood.Controllers
 		public IEnumerable<Ingredient> GetIngredientsForRecipe(int id)
 		{
 			return Get(id).Ingredients;
+		}
+		[Route("")]
+		public IHttpActionResult Post(Recipe recipe)
+		{
+			if (ModelState.IsValid)
+			{
+				_recipesProvider.Add(recipe);
+				return Created(recipe.Id.ToString(CultureInfo.InvariantCulture), recipe);
+			}
+			return BadRequest(ModelState);
 		}
     }
 }
